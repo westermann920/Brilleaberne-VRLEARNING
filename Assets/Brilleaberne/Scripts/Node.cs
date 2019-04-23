@@ -13,6 +13,7 @@ public class Node : MonoBehaviour
     public int Neutrons;
     public int Electrons;
 
+
     // Start is called before the first frame update
     void Start()
     {

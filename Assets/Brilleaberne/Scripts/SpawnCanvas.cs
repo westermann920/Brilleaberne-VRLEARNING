@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnCanvas : MonoBehaviour
 {
     public GameObject prefab;
+    GameObject hitObj;
 
 
     // Start is called before the first frame update
@@ -19,12 +20,14 @@ public class SpawnCanvas : MonoBehaviour
         RaycastHit hit;
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity)) {
-            
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            hitObj = hit.collider.gameObject;
         }
     }
 
   public void SpawnCanvasFunction() {
-        Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
+        //Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
+        Debug.Log(hitObj.GetComponent<NodeList>().GetMoleculeList());
 
     }
 }

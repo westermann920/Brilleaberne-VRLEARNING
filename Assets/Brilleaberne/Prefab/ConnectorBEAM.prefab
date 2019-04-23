@@ -232,6 +232,7 @@ GameObject:
   - component: {fileID: 2107852871567585378}
   - component: {fileID: 1650288204}
   - component: {fileID: 5226170471092328848}
+  - component: {fileID: 1848464350062443216}
   m_Layer: 0
   m_Name: ConnectorBEAM
   m_TagString: Untagged
@@ -280,7 +281,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7c32cfb553a7c724e99cb187e9ea3943, type: 2}
+  - {fileID: 2100000, guid: eae69db5a2c0278479020671904fb30f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -363,6 +364,22 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &1848464350062443216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107852871567585385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b35d2298356c1564fa6f81fbfe491a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapZoneList:
+  - {fileID: 2108551608338607015}
+  - {fileID: 3317123074906904504}
+  childString: 
 --- !u!1 &4145062222717276026
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,10 +541,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2107852871567585389}
     m_Modifications:
-    - target: {fileID: 1000010066341254, guid: 5d323709f0cbd454196647d9d8f2dd84, type: 3}
-      propertyPath: m_Name
-      value: SnapDropZone
-      objectReference: {fileID: 0}
     - target: {fileID: 4000013912359922, guid: 5d323709f0cbd454196647d9d8f2dd84, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.03
@@ -576,11 +589,15 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010066341254, guid: 5d323709f0cbd454196647d9d8f2dd84, type: 3}
+      propertyPath: m_Name
+      value: SnapDropZone
+      objectReference: {fileID: 0}
     - target: {fileID: 114000012880271118, guid: 5d323709f0cbd454196647d9d8f2dd84,
         type: 3}
       propertyPath: highlightObjectPrefab
       value: 
-      objectReference: {fileID: 5813325591560640203, guid: 5c9ae02d54363e54194546c86e43f0f4,
+      objectReference: {fileID: 4743416977818248437, guid: ff8f9910ecc0eb74589434b4d5ca689d,
         type: 3}
     - target: {fileID: 114000012880271118, guid: 5d323709f0cbd454196647d9d8f2dd84,
         type: 3}
@@ -630,6 +647,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2107852871715210785}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2108551608338607015 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000010066341254, guid: 5d323709f0cbd454196647d9d8f2dd84,
+    type: 3}
+  m_PrefabInstance: {fileID: 2107852871715210785}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3317820714040785470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -637,10 +660,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2107852871567585389}
     m_Modifications:
-    - target: {fileID: 1000010066341254, guid: 5d323709f0cbd454196647d9d8f2dd84, type: 3}
-      propertyPath: m_Name
-      value: SnapDropZone (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 4000013912359922, guid: 5d323709f0cbd454196647d9d8f2dd84, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.03
@@ -689,11 +708,15 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010066341254, guid: 5d323709f0cbd454196647d9d8f2dd84, type: 3}
+      propertyPath: m_Name
+      value: SnapDropZone (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 114000012880271118, guid: 5d323709f0cbd454196647d9d8f2dd84,
         type: 3}
       propertyPath: highlightObjectPrefab
       value: 
-      objectReference: {fileID: 5813325591560640203, guid: 5c9ae02d54363e54194546c86e43f0f4,
+      objectReference: {fileID: 4743416977818248437, guid: ff8f9910ecc0eb74589434b4d5ca689d,
         type: 3}
     - target: {fileID: 114000012880271118, guid: 5d323709f0cbd454196647d9d8f2dd84,
         type: 3}
@@ -737,6 +760,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d323709f0cbd454196647d9d8f2dd84, type: 3}
+--- !u!1 &3317123074906904504 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000010066341254, guid: 5d323709f0cbd454196647d9d8f2dd84,
+    type: 3}
+  m_PrefabInstance: {fileID: 3317820714040785470}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3316181639893268940 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000013912359922, guid: 5d323709f0cbd454196647d9d8f2dd84,
