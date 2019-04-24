@@ -53,13 +53,13 @@ public class NodeList : MonoBehaviour
     void setObjectReference(GameObject ObjE, LinkedList<string> list, GameObject prevObj) {
         // This is a reference to the beam connected to the Node (Atom)
         //beam1 = snapZoneList[E].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject().gameObject;
+
         if (ObjE.GetComponent<Node>()) {
             list.AddLast(ObjE.GetComponent<Node>().molecule);
         }
 
         for (int i = 0; i < ObjE.GetComponents<NodeList>().Length; i++) {
-            Debug.Log(i + " We inside the list");
-            if (ObjE.GetComponent<NodeList>().snapZoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject().gameObject != null && 
+            if (ObjE.GetComponent<NodeList>().snapZoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject() && 
                 ObjE.GetComponent<NodeList>().snapZoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject().gameObject != prevObj) {
                 setObjectReference(ObjE.GetComponent<NodeList>().snapZoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject().gameObject, list , ObjE);
             }
@@ -70,20 +70,17 @@ public class NodeList : MonoBehaviour
 
     public LinkedList<string> GetMoleculeList()
     {
-       // string toBeAdded = this.GetComponent<Node>.mole
-
-
-        //MoleculeList.AddFirst(this.GetComponent<Node>.);
+        if (this.GetComponent<Node>())
+        {
+            MoleculeList.AddFirst(this.GetComponent<Node>().molecule);
+        }
 
         for (int i = 0; i < snapZoneList.Length; i++)
         {
-            Debug.Log(i + " zone = " + snapZoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject());
             if (snapZoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject() != null) {
-                Debug.Log("shit");
                 setObjectReference(snapZoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject().gameObject, MoleculeList, this.gameObject);
             }
         }
-
 
         return MoleculeList;
     }
