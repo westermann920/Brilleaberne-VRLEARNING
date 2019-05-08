@@ -38,7 +38,7 @@ public class SpawnCanvas : MonoBehaviour
         H = 0;
         O = 0;
         LinkedList<string> MoleculeList = hitObj.GetComponent<NodeList>().GetMoleculeList();
-        Debug.Log(MoleculeList.Count);
+        Debug.Log("Length of moleculeList " + MoleculeList.Count);
         while (MoleculeList.Count > 0) {
             if (MoleculeList.Contains("H"))
             {
@@ -51,6 +51,6 @@ public class SpawnCanvas : MonoBehaviour
                 MoleculeList.Remove("O");
             }
         }
-        Debug.Log("H" + H + "O" + O);
+        Debug.Log("H" + H + " O" + O);
     }
 }

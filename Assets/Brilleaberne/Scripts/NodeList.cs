@@ -14,18 +14,7 @@ public class NodeList : MonoBehaviour
 
     public GameObject[] snapZoneList;
 
-    GameObject nextNode;
-    GameObject beam1;
-    GameObject beam2;
-
-
-    GameObject root;
-    GameObject snapped;
-
     public LinkedList<string> MoleculeList = new LinkedList<string>();
-
-    public string childString;
-
 
     // This will need to be revisited depending on the Unity rules. If the first prefab is the root, then the object on the piedestal will be the root at first and that wont do.
     // What needs to happen is that first element with a connector beam attached becomes the root node. It may be that we should call this script from the controller and save the list somewhere else
@@ -50,39 +39,71 @@ public class NodeList : MonoBehaviour
 
     }
 
-    void setObjectReference(GameObject ObjE, LinkedList<string> list, GameObject prevObj) {
+    void setObjectReference(GameObject ObjE, LinkedList<string> list, GameObject prevObj, int ID) {
         // This is a reference to the beam connected to the Node (Atom)
-        //beam1 = snapZoneList[E].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject().gameObject;
 
         if (ObjE.GetComponent<Node>()) {
+            Debug.Log("Checked object: " + ID + " has the node script");
             list.AddLast(ObjE.GetComponent<Node>().molecule);
         }
 
-        for (int i = 0; i < ObjE.GetComponents<NodeList>().Length; i++) {
-            if (ObjE.GetComponent<NodeList>().snapZoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject() && 
-                ObjE.GetComponent<NodeList>().snapZoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject().gameObject != prevObj) {
-                setObjectReference(ObjE.GetComponent<NodeList>().snapZoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject().gameObject, list , ObjE);
+        if (ObjE.GetComponent<NodeList>()) {
+
+            Debug.Log("Checked object: " + ID + " has the nodeList script");
+
+            GameObject[] listTest = ObjE.GetComponent<NodeList>().GetSnapZoneList();
+
+            for (int i = 0; i < listTest.Length; i++) {
+
+                Debug.Log("For loop running on object: " + ID + " Checking zone: " + i + " of " + listTest.Length);
+
+                if (listTest[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject() &&
+                    listTest[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject().gameObject != prevObj)
+                {
+                    Debug.Log("Object: " + ID + " Zone: " + i + " holds an object");
+                    setObjectReference(listTest[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject().gameObject, list, ObjE, ID++);
+                }
+                else
+                {
+                    Debug.Log("Object: " + ID + " Zone: " + i + " does NOT hold an object");
+                }
             }
         }
-
-        //nextNode = beam1.GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject().gameObject;
     }
 
     public LinkedList<string> GetMoleculeList()
     {
+        int ID = 0;
+
         if (this.GetComponent<Node>())
         {
             MoleculeList.AddFirst(this.GetComponent<Node>().molecule);
+            Debug.Log("Adding node for object with ID " + ID + " as first molecule in the list");
         }
 
         for (int i = 0; i < snapZoneList.Length; i++)
         {
+            Debug.Log("Running for loop to check for objects. Checking object with ID: " + ID + " snapZone: " + i + " of " + snapZoneList.Length);
+
             if (snapZoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject() != null) {
-                setObjectReference(snapZoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject().gameObject, MoleculeList, this.gameObject);
+
+                Debug.Log("Object with ID: " + ID + " Holds an object on snapZone: " + i);
+
+                setObjectReference(snapZoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject().gameObject, MoleculeList, this.gameObject, ID++);
+            }
+            else
+            {
+                Debug.Log("Object with ID: " + ID + " Does NOT hold an object on snapZone: " + i++);
             }
         }
 
         return MoleculeList;
     }
-    
+
+    GameObject[] GetSnapZoneList()
+    {
+        GameObject[] list = this.snapZoneList;
+        return list;
+    }
+
 }
