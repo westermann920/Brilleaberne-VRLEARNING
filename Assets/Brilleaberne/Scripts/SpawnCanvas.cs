@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnCanvas : MonoBehaviour
 {
     public GameObject prefab;
     public GameObject laser;
+    public Text CanvasMoleculeText;
     GameObject hitObj;
     LineRenderer line;
     int H, O;
@@ -33,8 +35,8 @@ public class SpawnCanvas : MonoBehaviour
         }
     }
 
-    public void SpawnCanvasFunction() {
-        //Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
+    public void SpawnCanvasFunction()
+    {
         H = 0;
         O = 0;
         LinkedList<string> MoleculeList = hitObj.GetComponent<NodeList>().GetMoleculeList();
@@ -52,5 +54,7 @@ public class SpawnCanvas : MonoBehaviour
             }
         }
         Debug.Log("H" + H + " O" + O);
+        CanvasMoleculeText.text = "Molecule:" + '\n' + "H" + H + " O" + O;
+        //Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
     }
 }
