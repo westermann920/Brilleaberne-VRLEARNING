@@ -263,7 +263,7 @@ Transform:
   m_GameObject: {fileID: 6313537333706239185}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.27, y: 2.8200004, z: 7.19}
-  m_LocalScale: {x: 0.5, y: 0.50000024, z: 0.50000024}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 36041851685328542}
   - {fileID: 7877976859215830341}
@@ -411,7 +411,6 @@ MonoBehaviour:
   snapZoneList:
   - {fileID: 39885482939726058}
   - {fileID: 7879481082064663345}
-  childString: 
 --- !u!1 &6503138911646269632
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,11 +624,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114000012880271118, guid: 5d323709f0cbd454196647d9d8f2dd84,
         type: 3}
-      propertyPath: highlightAlwaysActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012880271118, guid: 5d323709f0cbd454196647d9d8f2dd84,
-        type: 3}
       propertyPath: highlightColor.r
       value: 0
       objectReference: {fileID: 0}
@@ -652,6 +646,11 @@ PrefabInstance:
         type: 3}
       propertyPath: validHighlightColor.b
       value: 0.8985181
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012880271118, guid: 5d323709f0cbd454196647d9d8f2dd84,
+        type: 3}
+      propertyPath: highlightAlwaysActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 135000010323760288, guid: 5d323709f0cbd454196647d9d8f2dd84,
         type: 3}
@@ -744,11 +743,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114000012880271118, guid: 5d323709f0cbd454196647d9d8f2dd84,
         type: 3}
-      propertyPath: highlightAlwaysActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012880271118, guid: 5d323709f0cbd454196647d9d8f2dd84,
-        type: 3}
       propertyPath: highlightColor.r
       value: 0
       objectReference: {fileID: 0}
@@ -771,6 +765,11 @@ PrefabInstance:
         type: 3}
       propertyPath: validHighlightColor.b
       value: 0.8985181
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012880271118, guid: 5d323709f0cbd454196647d9d8f2dd84,
+        type: 3}
+      propertyPath: highlightAlwaysActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 135000010323760288, guid: 5d323709f0cbd454196647d9d8f2dd84,
         type: 3}

@@ -57,11 +57,11 @@ public class NodeList : MonoBehaviour
 
                 Debug.Log("For loop running on object: " + ID + " Checking zone: " + i + " of " + listTest.Length);
 
-                if (listTest[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject() &&
-                    listTest[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject().gameObject != prevObj)
+                if (listTest[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedObject() &&
+                    listTest[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedObject() != prevObj)
                 {
                     Debug.Log("Object: " + ID + " Zone: " + i + " holds an object");
-                    setObjectReference(listTest[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject().gameObject, list, ObjE, ID++);
+                    setObjectReference(listTest[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedObject(), list, ObjE, ID++);
                 }
                 else
                 {
@@ -85,15 +85,15 @@ public class NodeList : MonoBehaviour
         {
             Debug.Log("Running for loop to check for objects. Checking object with ID: " + ID + " snapZone: " + i + " of " + snapZoneList.Length);
 
-            if (snapZoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject() != null) {
+            if (snapZoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedObject() != null) {
 
                 Debug.Log("Object with ID: " + ID + " Holds an object on snapZone: " + i);
 
-                setObjectReference(snapZoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedInteractableObject().gameObject, MoleculeList, this.gameObject, ID++);
+                setObjectReference(snapZoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedObject(), MoleculeList, this.gameObject, ID++);
             }
             else
             {
-                Debug.Log("Object with ID: " + ID + " Does NOT hold an object on snapZone: " + i++);
+                Debug.Log("Object with ID: " + ID + " Does NOT hold an object on snapZone: " + i);
             }
         }
 
