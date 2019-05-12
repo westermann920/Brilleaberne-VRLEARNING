@@ -6,6 +6,8 @@ TagManager:
   tags:
   - ExcludeTeleport
   - SnapDrop
+  - Connector
+  - Atom
   layers:
   - Default
   - TransparentFX

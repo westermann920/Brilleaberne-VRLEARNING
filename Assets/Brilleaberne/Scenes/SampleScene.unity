@@ -132,6 +132,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConnectorBEAM
       objectReference: {fileID: 0}
+    - target: {fileID: 2107852871567585385, guid: ed3b78715102f214cbb77ff1040e8e3d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Connector
+      objectReference: {fileID: 0}
     - target: {fileID: 2107852871567585389, guid: ed3b78715102f214cbb77ff1040e8e3d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -231,7 +236,7 @@ MonoBehaviour:
   operation: 1
   checkType: 1
   identifiers:
-  - SnapDrop
+  - Connector
 --- !u!4 &4839504
 Transform:
   m_ObjectHideFlags: 0
@@ -7493,7 +7498,7 @@ MonoBehaviour:
   operation: 1
   checkType: 1
   identifiers:
-  - SnapDrop
+  - Atom
 --- !u!1 &2103652729
 GameObject:
   m_ObjectHideFlags: 0
@@ -7911,6 +7916,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Oxygen
       objectReference: {fileID: 0}
+    - target: {fileID: 6313537333706239185, guid: 5c9ae02d54363e54194546c86e43f0f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Atom
+      objectReference: {fileID: 0}
     - target: {fileID: 7382618301681481415, guid: 5c9ae02d54363e54194546c86e43f0f4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8065,11 +8075,6 @@ PrefabInstance:
       propertyPath: highlightAlwaysActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9083400452338490888, guid: 57acdca9258386a43aeaa33df3e96f5b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9079412328377257079, guid: 57acdca9258386a43aeaa33df3e96f5b,
         type: 3}
       propertyPath: m_LocalScale.y
@@ -8085,6 +8090,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9083400452338490888, guid: 57acdca9258386a43aeaa33df3e96f5b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57acdca9258386a43aeaa33df3e96f5b, type: 3}
 --- !u!1001 &7638329448746353586
@@ -8098,6 +8108,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hydrogen
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017743158870690337, guid: effdc57675d4a9441b41109c58ae825e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Atom
       objectReference: {fileID: 0}
     - target: {fileID: 508438047365486878, guid: effdc57675d4a9441b41109c58ae825e,
         type: 3}
