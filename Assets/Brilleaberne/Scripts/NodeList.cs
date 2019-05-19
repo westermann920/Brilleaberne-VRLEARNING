@@ -39,21 +39,25 @@ public class NodeList : MonoBehaviour
 
     }
 
-    void setObjectReference(GameObject ObjE, LinkedList<string> list, GameObject prevObj, int ID) {
+    void setObjectReference(GameObject ObjE, LinkedList<string> list, GameObject prevObj, int ID)
+    {
         // This is a reference to the beam connected to the Node (Atom)
 
-        if (ObjE.GetComponent<Node>()) {
+        if (ObjE.GetComponent<Node>())
+        {
             Debug.Log("Checked object: " + ID + " has the node script");
             list.AddLast(ObjE.GetComponent<Node>().molecule);
         }
 
-        if (ObjE.GetComponent<NodeList>()) {
+        if (ObjE.GetComponent<NodeList>())
+        {
 
             Debug.Log("Checked object: " + ID + " has the nodeList script");
 
             GameObject[] listTest = ObjE.GetComponent<NodeList>().GetSnapZoneList();
 
-            for (int i = 0; i < listTest.Length; i++) {
+            for (int i = 0; i < listTest.Length; i++)
+            {
 
                 Debug.Log("For loop running on object: " + ID + " Checking zone: " + i + " of " + listTest.Length);
 
@@ -85,7 +89,8 @@ public class NodeList : MonoBehaviour
         {
             Debug.Log("Running for loop to check for objects. Checking object with ID: " + ID + " snapZone: " + i + " of " + snapZoneList.Length);
 
-            if (snapZoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedObject() != null) {
+            if (snapZoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedObject() != null)
+            {
 
                 Debug.Log("Object with ID: " + ID + " Holds an object on snapZone: " + i);
 

@@ -1200,6 +1200,8 @@ MonoBehaviour:
     type: 3}
   prefabMolText: {fileID: 4623013121074824198, guid: 8de93d760aa15d54b9c9e1df457e0858,
     type: 3}
+  prefabMathBlock: {fileID: 4623013121074824198, guid: 392ea03c3d3764a418732b07e796d847,
+    type: 3}
   laser: {fileID: 2143536495}
   CanvasMoleculeText: {fileID: 0}
 --- !u!1 &282059926
@@ -7746,6 +7748,8 @@ MonoBehaviour:
   prefabMolMenu: {fileID: 6737869783750718429, guid: dc08048372a665c41b6a0ad8e71b62e9,
     type: 3}
   prefabMolText: {fileID: 4623013121074824198, guid: 8de93d760aa15d54b9c9e1df457e0858,
+    type: 3}
+  prefabMathBlock: {fileID: 4623013121074824198, guid: 392ea03c3d3764a418732b07e796d847,
     type: 3}
   laser: {fileID: 322217797}
   CanvasMoleculeText: {fileID: 0}

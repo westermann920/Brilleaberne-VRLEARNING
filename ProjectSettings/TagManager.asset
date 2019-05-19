@@ -8,6 +8,10 @@ TagManager:
   - SnapDrop
   - Connector
   - Atom
+  - MoleculeText
+  - MoleCuleTextBoard
+  - MathBlockPlus
+  - MathBlockMinus
   layers:
   - Default
   - TransparentFX
