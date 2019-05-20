@@ -160,6 +160,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32d15468cb116b409c672c583939d43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  atom: 
+  atomCount: 0
+  targetMolecule: {fileID: 0}
+  prefabs:
+  - {fileID: 2107852871567585385, guid: ed3b78715102f214cbb77ff1040e8e3d, type: 3}
+  - {fileID: 2017743158870690337, guid: effdc57675d4a9441b41109c58ae825e, type: 3}
+  - {fileID: 6313537333706239185, guid: 5c9ae02d54363e54194546c86e43f0f4, type: 3}
 --- !u!1 &5211681628812208733
 GameObject:
   m_ObjectHideFlags: 0

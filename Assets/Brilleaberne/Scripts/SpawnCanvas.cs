@@ -53,7 +53,7 @@ public class SpawnCanvas : MonoBehaviour
             LinkedList<string> letterCounter = new LinkedList<string>();
             //Debug.Log("Length of moleculeList " + MoleculeList.Count);
 
-             //GameObject moleculeMenu = Instantiate(prefabMolMenu, new Vector3(hitObj.transform.position.x + 0.5f, hitObj.transform.position.y, hitObj.transform.position.z), Quaternion.identity);
+            //GameObject moleculeMenu = Instantiate(prefabMolMenu, new Vector3(hitObj.transform.position.x + 0.5f, hitObj.transform.position.y, hitObj.transform.position.z), Quaternion.identity);
 
             /*
             foreach (string str in MoleculeList)
@@ -66,24 +66,23 @@ public class SpawnCanvas : MonoBehaviour
                 }
             }
             */
-            
-            while (MoleculeList.Count > 0)
+
+            foreach (string mol in MoleculeList)
             {
-                if (MoleculeList.Contains("H"))
+                if (mol == "H")
                 {
                     H++;
-                    MoleculeList.Remove("H");
                 }
-                else if (MoleculeList.Contains("O"))
+                else if (mol == "O")
                 {
                     O++;
-                    MoleculeList.Remove("O");
                 }
             }
             
             Debug.Log("H" + H + " O" + O);
 
             moleculeMenu = Instantiate(prefabMolMenu, new Vector3(hitObj.transform.position.x + 0.5f, hitObj.transform.position.y, hitObj.transform.position.z), Quaternion.identity);
+
 
             float x = 0;
 
@@ -94,6 +93,8 @@ public class SpawnCanvas : MonoBehaviour
 
                 moleculeText.GetComponent<MathBlockScript>().atom = "H";
                 moleculeText.GetComponent<MathBlockScript>().atomCount = H;
+                moleculeText.GetComponent<MathBlockScript>().targetMolecule = hitObj;
+
                 moleculeText.GetComponent<Text>().text ="H" + H;
                 moleculeText.transform.SetParent(moleculeMenu.transform);
 
@@ -106,6 +107,7 @@ public class SpawnCanvas : MonoBehaviour
                 GameObject moleculeText = Instantiate(prefabMolText, new Vector3(moleculeMenu.transform.position.x+x, moleculeMenu.transform.position.y, moleculeMenu.transform.position.z), Quaternion.identity);
                 moleculeText.GetComponent<MathBlockScript>().atom = "O";
                 moleculeText.GetComponent<MathBlockScript>().atomCount = 0;
+                moleculeText.GetComponent<MathBlockScript>().targetMolecule = hitObj;
                 moleculeText.GetComponent<Text>().text = "O" + O;
                 moleculeText.transform.SetParent(moleculeMenu.transform);
 
@@ -118,6 +120,7 @@ public class SpawnCanvas : MonoBehaviour
 
         if (hitObj.tag == "MoleCuleTextBoard")
         {
+            moleculeMenu = hitObj.transform.parent.gameObject;
 
             GameObject moleculeText1 = Instantiate(prefabMathBlock, new Vector3(hitObj.transform.position.x - 0.2f, hitObj.transform.position.y - 0.5f, hitObj.transform.position.z), Quaternion.identity);
             GameObject moleculeText2 = Instantiate(prefabMathBlock, new Vector3(hitObj.transform.position.x + 0.2f, hitObj.transform.position.y - 0.5f, hitObj.transform.position.z), Quaternion.identity);
@@ -132,8 +135,6 @@ public class SpawnCanvas : MonoBehaviour
             moleculeText2.transform.SetParent(moleculeMenu.transform);
             moleculeText2.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
             moleculeText2.tag = "MathBlockMinus";
-            
-
         }
     }
 }

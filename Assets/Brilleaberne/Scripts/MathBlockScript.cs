@@ -10,6 +10,8 @@ public class MathBlockScript : MonoBehaviour
 
     public String atom;
     public int atomCount;
+    public GameObject targetMolecule;
+    public GameObject[] prefabs;
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +54,24 @@ public class MathBlockScript : MonoBehaviour
 
             atomCount++;
             gameObject.GetComponent<Text>().text = atom + atomCount;
-       
+            GameObject beamObj;
+            GameObject atomObj;
+
+            if (atom == "H")
+            {
+                beamObj = Instantiate(prefabs[0], new Vector3(targetMolecule.transform.position.x-1, targetMolecule.transform.position.y, targetMolecule.transform.position.z), Quaternion.identity);
+                atomObj = Instantiate(prefabs[1], new Vector3(targetMolecule.transform.position.x-2, targetMolecule.transform.position.y, targetMolecule.transform.position.z), Quaternion.identity);
+                //beamObj.transform.parent.GetComponent<VRTK.VRTK_SnapDropZone>().currentSnappedObject = atomObj.GetComponent<VRTK.VRTK_InteractableObject>();
+                //Debug.Log("snapCurr is equals too: " + snapCurr.GetComponent<Node>().molecule);
+            }
+            else if (atom == "O")
+            {
+                beamObj = Instantiate(prefabs[0], new Vector3(targetMolecule.transform.position.x-1, targetMolecule.transform.position.y, targetMolecule.transform.position.z), Quaternion.identity);
+                atomObj = Instantiate(prefabs[2], new Vector3(targetMolecule.transform.position.x-2, targetMolecule.transform.position.y, targetMolecule.transform.position.z), Quaternion.identity);
+                //beamObj.transform.GetChild(0).GetComponent<VRTK.VRTK_SnapDropZone>().currentSnappedObject = atomObj.GetComponent<VRTK.VRTK_InteractableObject>();
+                //Debug.Log("snapCurr is equals too: " + snapCurr.GetComponent<Node>().molecule);
+            }
+
         }
 
        else if (collision.gameObject.tag == "MathBlockMinus")
@@ -65,10 +84,10 @@ public class MathBlockScript : MonoBehaviour
 
             */
 
-            if(atomCount > 0) { 
-            atomCount--;
-            gameObject.GetComponent<Text>().text = atom + atomCount;
-
+            if(atomCount > 0)
+            {
+                atomCount--;
+                gameObject.GetComponent<Text>().text = atom + atomCount;
             }
         }
     }
