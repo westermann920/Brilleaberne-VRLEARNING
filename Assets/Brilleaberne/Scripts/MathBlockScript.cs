@@ -158,6 +158,7 @@ public class MathBlockScript : MonoBehaviour
             {
                 if (checkFreeZone(parentTransform.gameObject))
                 {
+                    Debug.Log("Check freezone = true");
                     objFreeSnap.GetComponent<VRTK.VRTK_SnapDropZone>().ForceSnap(obj);
                     return;
                 }
