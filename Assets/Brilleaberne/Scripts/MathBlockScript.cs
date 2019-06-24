@@ -90,20 +90,49 @@ public class MathBlockScript : MonoBehaviour
             {
                 atomCount--;
                 gameObject.GetComponent<Text>().text = atom + atomCount;
-                findChildAtom(root);
+                findChildAtom(atom);
             }
        }
     }
 
-    private void findChildAtom(GameObject parentObj)
+    private void findChildAtom(String atom)
     {
-        var children = new List<GameObject>();
+        GameObject delAtomObj = new GameObject();
+        GameObject delConnectorObj = new GameObject();
 
-        foreach (Transform childTransform in parentObj.transform)
+        Queue<Transform> children = new Queue<Transform>();
+        children.Enqueue(root.transform);
+
+        while (children.Count > 0)
         {
-            var childGameObject = childTransform.gameObject;
-            children.Add(childGameObject);
-		}
+            Transform parentTransform = children.Dequeue();
 
-	}
+            foreach (Transform child1Transform in parentTransform)
+            {
+                foreach (Transform child2Transform in child1Transform)
+                {
+                    if (child2Transform.gameObject.tag == "Atom")
+                    {
+                        children.Enqueue(child2Transform);
+                        if (child2Transform.gameObject.GetComponent<Node>().molecule == atom)
+                        {
+                            delAtomObj = child2Transform.gameObject;
+                        }
+                    }
+                    else if (child2Transform.gameObject.tag == "Connector")
+                    {
+                        children.Enqueue(child2Transform);
+                    }
+                }
+		    }
+        }
+
+
+        if (delAtomObj.transform.parent.parent != null)
+        {
+            delConnectorObj = delAtomObj.transform.parent.parent.gameObject;
+        }
+        Destroy(delAtomObj);
+        Destroy(delConnectorObj);
+    }
 }
