@@ -104,7 +104,7 @@ public class SpawnCanvas : MonoBehaviour
             {
                 GameObject moleculeText = Instantiate(prefabMolText, new Vector3(moleculeMenu.transform.position.x+x, moleculeMenu.transform.position.y, moleculeMenu.transform.position.z), Quaternion.identity);
                 moleculeText.GetComponent<MathBlockScript>().atom = "O";
-                moleculeText.GetComponent<MathBlockScript>().atomCount = 0;
+                moleculeText.GetComponent<MathBlockScript>().atomCount = O;
                 moleculeText.GetComponent<MathBlockScript>().targetMolecule = hitObj;
                 moleculeText.GetComponent<MathBlockScript>().root = root;
 
