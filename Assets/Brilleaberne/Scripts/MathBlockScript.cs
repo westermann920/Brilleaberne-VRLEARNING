@@ -90,12 +90,12 @@ public class MathBlockScript : MonoBehaviour
             {
                 atomCount--;
                 gameObject.GetComponent<Text>().text = atom + atomCount;
-                findChildAtom(atom);
+                findAtomToDelete(atom);
             }
        }
     }
 
-    private void findChildAtom(String atom)
+    private void findAtomToDelete(String atom)
     {
         GameObject delAtomObj = new GameObject();
         GameObject delConnectorObj = new GameObject();
