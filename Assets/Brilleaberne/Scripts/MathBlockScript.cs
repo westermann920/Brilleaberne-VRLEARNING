@@ -13,7 +13,7 @@ public class MathBlockScript : MonoBehaviour
     public GameObject targetMolecule;
     public GameObject[] prefabs;
     public GameObject root;
-    GameObject objRemove;
+    GameObject objFreeSnap;
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +63,10 @@ public class MathBlockScript : MonoBehaviour
             {
                 beamObj = Instantiate(prefabs[0], new Vector3(targetMolecule.transform.position.x-1, targetMolecule.transform.position.y, targetMolecule.transform.position.z), Quaternion.identity);
                 atomObj = Instantiate(prefabs[1], new Vector3(targetMolecule.transform.position.x-2, targetMolecule.transform.position.y, targetMolecule.transform.position.z), Quaternion.identity);
+
+                findFreeZone(beamObj.GetComponent<NodeList>().snapZoneList, atomObj);
+                findFreeAtom(beamObj);
+
                 //beamObj.transform.parent.GetComponent<VRTK.VRTK_SnapDropZone>().currentSnappedObject = atomObj.GetComponent<VRTK.VRTK_InteractableObject>();
                 //Debug.Log("snapCurr is equals too: " + snapCurr.GetComponent<Node>().molecule);
             }
@@ -72,6 +76,11 @@ public class MathBlockScript : MonoBehaviour
                 atomObj = Instantiate(prefabs[2], new Vector3(targetMolecule.transform.position.x-2, targetMolecule.transform.position.y, targetMolecule.transform.position.z), Quaternion.identity);
                 //beamObj.transform.GetChild(0).GetComponent<VRTK.VRTK_SnapDropZone>().currentSnappedObject = atomObj.GetComponent<VRTK.VRTK_InteractableObject>();
                 //Debug.Log("snapCurr is equals too: " + snapCurr.GetComponent<Node>().molecule);
+
+            
+                findFreeZone(beamObj.GetComponent<NodeList>().snapZoneList, atomObj);
+                findFreeAtom(beamObj);
+
             }
 
         }
@@ -134,5 +143,70 @@ public class MathBlockScript : MonoBehaviour
         }
         Destroy(delAtomObj);
         Destroy(delConnectorObj);
+    }
+
+    void findFreeAtom(GameObject obj)
+    {
+        Queue<Transform> list = new Queue<Transform>();
+        list.Enqueue(root.transform);
+        
+        while (list.Count > 0)
+        {
+            Transform parentTransform = list.Dequeue();
+
+            if (parentTransform.gameObject.tag == "Atom")
+            {
+                if (checkFreeZone(parentTransform.gameObject))
+                {
+                    objFreeSnap.GetComponent<VRTK.VRTK_SnapDropZone>().ForceSnap(obj);
+                    return;
+                }
+            }
+
+            foreach (Transform child1Transform in list)
+            {
+                foreach (Transform child2Transform in child1Transform)
+                {
+                    if (child2Transform.gameObject.tag == "Atom" || child2Transform.gameObject.tag == "Connector")
+                    {
+                        list.Enqueue(child2Transform);
+                    }
+                
+                }
+            }
+        }
+    }
+
+    bool checkFreeZone(GameObject parent)
+    {
+        bool result = false;
+        int used = 0;
+
+        for (int i = 0; i < parent.GetComponent<NodeList>().snapZoneList.Length-1; i++)
+        {
+            if (parent.GetComponent<NodeList>().snapZoneList[i].gameObject.transform.childCount <= 1)
+            {
+                objFreeSnap = parent.GetComponent<NodeList>().snapZoneList[i].gameObject;
+                result = true;
+            }
+            else
+            {
+                used++;
+            }
+        }
+
+        return result;
+    }
+
+    void findFreeZone(GameObject[] zoneList, GameObject objToZnap)
+    {
+        for (int i = 0; i <= zoneList.Length-1; i++)
+        {
+            if (zoneList[i].transform.childCount <= 1)
+            {
+                zoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().ForceSnap(objToZnap);
+                return;
+            }
+        }
     }
 }

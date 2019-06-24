@@ -14010,6 +14010,11 @@ PrefabInstance:
       propertyPath: validObjectListPolicy
       value: 
       objectReference: {fileID: 4839503}
+    - target: {fileID: 14045827498635412, guid: 5c9ae02d54363e54194546c86e43f0f4,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c9ae02d54363e54194546c86e43f0f4, type: 3}
 --- !u!1001 &5547762910668800070
