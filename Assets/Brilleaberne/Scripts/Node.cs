@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Node : MonoBehaviour
 {
-
     public string name;
     public string molecule;
     public int AtomicNumber;
@@ -12,17 +11,4 @@ public class Node : MonoBehaviour
     public int Protons;
     public int Neutrons;
     public int Electrons;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

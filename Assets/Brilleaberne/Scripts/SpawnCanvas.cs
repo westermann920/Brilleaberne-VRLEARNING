@@ -9,6 +9,7 @@ public class SpawnCanvas : MonoBehaviour
     public GameObject prefabMolText;
     public GameObject prefabMathBlock;
     public GameObject laser;
+    public GameObject root;
    
     GameObject moleculeMenu;
     GameObject hitObj;
@@ -83,9 +84,7 @@ public class SpawnCanvas : MonoBehaviour
 
             moleculeMenu = Instantiate(prefabMolMenu, new Vector3(hitObj.transform.position.x + 0.5f, hitObj.transform.position.y, hitObj.transform.position.z), Quaternion.identity);
 
-
             float x = 0;
-
 
             if(H > 0)
             { 
@@ -94,13 +93,12 @@ public class SpawnCanvas : MonoBehaviour
                 moleculeText.GetComponent<MathBlockScript>().atom = "H";
                 moleculeText.GetComponent<MathBlockScript>().atomCount = H;
                 moleculeText.GetComponent<MathBlockScript>().targetMolecule = hitObj;
+                moleculeText.GetComponent<MathBlockScript>().root = root;
 
                 moleculeText.GetComponent<Text>().text ="H" + H;
                 moleculeText.transform.SetParent(moleculeMenu.transform);
 
                 x = x + 0.5f;
-
-
             }
             if (O > 0)
             {
@@ -108,9 +106,12 @@ public class SpawnCanvas : MonoBehaviour
                 moleculeText.GetComponent<MathBlockScript>().atom = "O";
                 moleculeText.GetComponent<MathBlockScript>().atomCount = 0;
                 moleculeText.GetComponent<MathBlockScript>().targetMolecule = hitObj;
+                moleculeText.GetComponent<MathBlockScript>().root = root;
+
                 moleculeText.GetComponent<Text>().text = "O" + O;
                 moleculeText.transform.SetParent(moleculeMenu.transform);
 
+                x = x + 0.5f;
             }
            
             //moleculeMenu.GetComponentInChildren<Text>().text = "Molecule:" + '\n' + "H" + H + " O" + O;

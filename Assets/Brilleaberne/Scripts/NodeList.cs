@@ -5,10 +5,6 @@ using VRTK;
 
 // AUTO INDENT IS : CTRL + K and then CTRL + F (YES BOTH ARE NEEDED, IN THAT ORDER)
 
-/**
-     
-     
-*/
 public class NodeList : MonoBehaviour
 {
 
@@ -77,24 +73,30 @@ public class NodeList : MonoBehaviour
 
     public LinkedList<string> GetMoleculeList()
     {
+        GameObject root = transform.root.gameObject;
+        GameObject.FindGameObjectWithTag("RightController").GetComponent<SpawnCanvas>().root = root;
+        GameObject.FindGameObjectWithTag("LeftController").GetComponent<SpawnCanvas>().root = root;
+
         int ID = 0;
 
-        if (this.GetComponent<Node>())
+        if (root.GetComponent<Node>())
         {
-            MoleculeList.AddFirst(this.GetComponent<Node>().molecule);
+            MoleculeList.AddFirst(root.GetComponent<Node>().molecule);
             Debug.Log("Adding node for object with ID " + ID + " as first molecule in the list");
         }
 
-        for (int i = 0; i < snapZoneList.Length; i++)
-        {
-            Debug.Log("Running for loop to check for objects. Checking object with ID: " + ID + " snapZone: " + i + " of " + snapZoneList.Length);
+        GameObject[] rootList = root.GetComponent<NodeList>().GetSnapZoneList();
 
-            if (snapZoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedObject() != null)
+        for (int i = 0; i < rootList.Length; i++)
+        {
+            Debug.Log("Running for loop to check for objects. Checking object with ID: " + ID + " snapZone: " + i + " of " + rootList.Length);
+
+            if (rootList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedObject() != null)
             {
 
                 Debug.Log("Object with ID: " + ID + " Holds an object on snapZone: " + i);
 
-                setObjectReference(snapZoneList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedObject(), MoleculeList, this.gameObject, ID++);
+                setObjectReference(rootList[i].GetComponent<VRTK.VRTK_SnapDropZone>().GetCurrentSnappedObject(), MoleculeList, root, ID++);
             }
             else
             {
@@ -110,5 +112,4 @@ public class NodeList : MonoBehaviour
         GameObject[] list = this.snapZoneList;
         return list;
     }
-
 }

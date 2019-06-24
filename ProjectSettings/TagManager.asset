@@ -12,6 +12,8 @@ TagManager:
   - MoleCuleTextBoard
   - MathBlockPlus
   - MathBlockMinus
+  - RightController
+  - LeftController
   layers:
   - Default
   - TransparentFX

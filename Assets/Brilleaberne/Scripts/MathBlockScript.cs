@@ -12,6 +12,8 @@ public class MathBlockScript : MonoBehaviour
     public int atomCount;
     public GameObject targetMolecule;
     public GameObject[] prefabs;
+    public GameObject root;
+    GameObject objRemove;
 
     // Start is called before the first frame update
     void Start()
@@ -88,7 +90,20 @@ public class MathBlockScript : MonoBehaviour
             {
                 atomCount--;
                 gameObject.GetComponent<Text>().text = atom + atomCount;
+                findChildAtom(root);
             }
-        }
+       }
     }
+
+    private void findChildAtom(GameObject parentObj)
+    {
+        var children = new List<GameObject>();
+
+        foreach (Transform childTransform in parentObj.transform)
+        {
+            var childGameObject = childTransform.gameObject;
+            children.Add(childGameObject);
+		}
+
+	}
 }
